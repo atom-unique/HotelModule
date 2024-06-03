@@ -1,0 +1,124 @@
+databaseChangeLog:
+  - include:
+      file: create-table-room.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert-into-room.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create-table-service.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert-into-service.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create-table-employee.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert-into-employee.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create-table-client.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert-into-client.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create-table-client_services.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert-into-client_services.sql
+      relativeToChangelogFile: true
+  - include:
+      file: create-table-record.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert-into-record.sql
+      relativeToChangelogFile: true
+
+changeSet:
+  id: 0.1
+  author: Y.Kravchenko
+  logicalFilePath: 0.1/master.yaml
+  changes:
+    - sqlFile:
+        path:
+          create-table-room.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          insert-into-room.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          create-table-service.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          insert-into-service.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          create-table-employee.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          insert-into-employee.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          create-table-client.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          insert-into-client.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          create-table-client_services.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          insert-into-client_services.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          create-table-record.sql
+        relativeToChangelogFile:
+          true
+    - sqlFile:
+        path:
+          insert-into-record.sql
+        relativeToChangelogFile:
+          true
+    - tagDatabase:
+        tag: 0.1
+  rollback:
+    - delete:
+        tableName:
+          record
+    - delete:
+        tableName:
+          client_services
+    - delete:
+        tableName:
+          client
+    - delete:
+        tableName:
+          employee
+    - delete:
+        tableName:
+          service
+    - delete:
+        tableName:
+          room
