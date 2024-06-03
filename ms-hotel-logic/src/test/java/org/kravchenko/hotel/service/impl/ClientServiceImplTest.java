@@ -28,9 +28,7 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-@Listeners({
-        MockitoTestNGListener.class
-})
+@Listeners(MockitoTestNGListener.class)
 public class ClientServiceImplTest {
 
     @Spy

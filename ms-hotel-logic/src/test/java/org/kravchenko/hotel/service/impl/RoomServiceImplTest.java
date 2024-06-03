@@ -23,9 +23,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.fail;
 
-@Listeners({
-        MockitoTestNGListener.class
-})
+@Listeners(MockitoTestNGListener.class)
 public class RoomServiceImplTest {
 
     @Mock
@@ -49,7 +47,7 @@ public class RoomServiceImplTest {
     private final RoomDto dto2 = new RoomDto();
 
     @BeforeClass
-    void createRoom() {
+    void setUp() {
         this.room1.setId(1L);
         this.room1.setPrice(100);
         this.room1.setCapacity(3);
