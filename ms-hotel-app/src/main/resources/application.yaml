@@ -3,12 +3,11 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
-#    generate-ddl: true
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/hotel
-    username: root
-    password: root
+    username: postgres
+    password: postgres
 
   application:
     name: hotel
