@@ -5,6 +5,7 @@ import org.kravchenko.hotel.controller.ClientController;
 import org.kravchenko.hotel.service.ClientService;
 import org.kravchenko.hotel.service.dto.ClientDto;
 import org.kravchenko.hotel.service.dto.ServicePriceDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,12 +24,14 @@ public class ClientControllerImpl implements ClientController {
         return clientService.getClientServices(id);
     }
 
-    public void addClient(ClientDto clientDto) {
+    public ResponseEntity<String> addClient(ClientDto clientDto) {
         clientService.addClient(clientDto);
+        return ResponseEntity.ok("Клиент успешно добавлен!");
     }
 
-    public void deleteClient(Long id) {
+    public ResponseEntity<String> deleteClient(Long id) {
         clientService.deleteClient(id);
+        return ResponseEntity.ok("Клиент успешно удален!");
     }
 
 }

@@ -5,6 +5,7 @@ import org.kravchenko.hotel.controller.RoomController;
 import org.kravchenko.hotel.service.RoomService;
 import org.kravchenko.hotel.service.dto.RoomDto;
 import org.kravchenko.hotel.service.dto.RoomPriceDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -47,16 +48,19 @@ public class RoomControllerImpl implements RoomController {
         return roomService.findAllFreeRoomsSortedByRating();
     }
 
-    public void addRoom(RoomDto roomDto) {
+    public ResponseEntity<String> addRoom(RoomDto roomDto) {
         roomService.addRoom(roomDto);
+        return ResponseEntity.ok("Номер успешно добавлен!");
     }
 
-    public void roomPriceUpdate(Long id, int price) {
+    public ResponseEntity<String> roomPriceUpdate(Long id, int price) {
         roomService.roomPriceUpdate(id, price);
+        return ResponseEntity.ok("Стоимость проживания успешно обновлена!");
     }
 
-    public void roomStatusUpdate(Long id, boolean inService) {
+    public ResponseEntity<String> roomStatusUpdate(Long id, boolean inService) {
         roomService.roomStatusUpdate(id, inService);
+        return ResponseEntity.ok("Статус номера обновлен!");
     }
 
     public int getAllFreeRoomsCount() {

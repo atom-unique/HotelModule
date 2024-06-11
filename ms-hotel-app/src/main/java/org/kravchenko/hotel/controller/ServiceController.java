@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.kravchenko.hotel.service.dto.ServiceDto;
 import org.kravchenko.hotel.service.dto.ServicePriceDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,13 +30,13 @@ public interface ServiceController {
             description = "Метод позволяет добавить новую услугу"
     )
     @PostMapping("/add")
-    void addService(@RequestBody ServiceDto serviceDto);
+    ResponseEntity<String> addService(@RequestBody ServiceDto serviceDto);
 
     @Operation(
             summary = "Обновление цены на услугу",
             description = "Метод позволяет обновить цену существующей услуги"
     )
     @PatchMapping("/update")
-    void servicePriceUpdate(@RequestParam Long id, @RequestParam int price);
+    ResponseEntity<String> servicePriceUpdate(@RequestParam Long id, @RequestParam int price);
 
 }

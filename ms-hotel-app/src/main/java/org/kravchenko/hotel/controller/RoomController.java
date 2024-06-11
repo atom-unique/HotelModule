@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.kravchenko.hotel.service.dto.RoomDto;
 import org.kravchenko.hotel.service.dto.RoomPriceDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -79,21 +80,21 @@ public interface RoomController {
             description = "Метод позволяет добавить новый номер"
     )
     @PostMapping("/add")
-    void addRoom(@RequestBody RoomDto roomDto);
+    ResponseEntity<String> addRoom(@RequestBody RoomDto roomDto);
 
     @Operation(
             summary = "Обновление цены на номер",
             description = "Метод позволяет обновить цену номера"
     )
     @PatchMapping("/update/price")
-    void roomPriceUpdate(@RequestParam Long id, @RequestParam int price);
+    ResponseEntity<String> roomPriceUpdate(@RequestParam Long id, @RequestParam int price);
 
     @Operation(
             summary = "Изменение статуса номера на обслуживаемый/обслуженный",
             description = "Метод позволяет изменить статус номера на обслуживаемый/обслуженный"
     )
     @PatchMapping("/update/status")
-    void roomStatusUpdate(@RequestParam Long id, @RequestParam boolean inService);
+    ResponseEntity<String> roomStatusUpdate(@RequestParam Long id, @RequestParam boolean inService);
 
     @Operation(
             summary = "Получение количества свободных номеров",

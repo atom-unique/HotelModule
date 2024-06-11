@@ -57,7 +57,7 @@ public class RecordControllerImplTest {
         int expectedCount = 5;
         when(recordService.clientsCount()).thenReturn(expectedCount);
 
-        int result = recordController.getAllFreeRoomsCount();
+        int result = recordController.getClientsCount();
 
         assertEquals(result, expectedCount);
         verify(recordService, times(1)).clientsCount();

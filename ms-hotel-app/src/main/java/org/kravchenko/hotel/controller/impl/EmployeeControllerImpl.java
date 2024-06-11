@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.kravchenko.hotel.controller.EmployeeController;
 import org.kravchenko.hotel.service.EmployeeService;
 import org.kravchenko.hotel.service.dto.EmployeeDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
@@ -16,11 +17,14 @@ public class EmployeeControllerImpl implements EmployeeController {
         return employeeService.findEmployee(id);
     }
 
-    public void addEmployee(EmployeeDto employeeDto) {
+    public ResponseEntity<String> addEmployee(EmployeeDto employeeDto) {
         employeeService.addEmployee(employeeDto);
+        return ResponseEntity.ok("Сотрудник успешно добавлен!");
     }
 
-    public void deleteEmployee(Long id) {
+    public ResponseEntity<String> deleteEmployee(Long id) {
         employeeService.deleteEmployee(id);
+        return ResponseEntity.ok("Сотрудник успешно удален!");
     }
+
 }

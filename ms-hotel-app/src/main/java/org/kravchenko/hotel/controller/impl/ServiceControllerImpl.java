@@ -5,6 +5,7 @@ import org.kravchenko.hotel.controller.ServiceController;
 import org.kravchenko.hotel.service.ServiceService;
 import org.kravchenko.hotel.service.dto.ServiceDto;
 import org.kravchenko.hotel.service.dto.ServicePriceDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,12 +20,14 @@ public class ServiceControllerImpl implements ServiceController {
         return service.getAllServicesWithPrice();
     }
 
-    public void addService(ServiceDto serviceDto) {
+    public ResponseEntity<String> addService(ServiceDto serviceDto) {
         service.addService(serviceDto);
+        return ResponseEntity.ok("Услуга успешно добавлена!");
     }
 
-    public void servicePriceUpdate(Long id, int price) {
+    public ResponseEntity<String> servicePriceUpdate(Long id, int price) {
         service.servicePriceUpdate(id, price);
+        return ResponseEntity.ok("Стоимость услуги успешно обновлена!");
     }
 
 }

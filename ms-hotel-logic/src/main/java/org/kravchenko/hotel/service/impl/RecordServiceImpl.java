@@ -152,8 +152,8 @@ public class RecordServiceImpl implements RecordService {
     }
 
     @Override
-    public List<RecordClientDateDto> getLastRoomClients(Long roomId) {
-        return recordRepository.findByRoomId(roomId).stream()
+    public List<RecordClientDateDto> getLastRoomClients(Long id) {
+        return recordRepository.findByRoomId(id).stream()
                 .map(recordClientDateConverter::toDto)
                 .sorted(Comparator.comparing(RecordClientDateDto::getCheckOutDate).reversed())
                 .limit(3L)
@@ -186,35 +186,32 @@ public class RecordServiceImpl implements RecordService {
     }
 
     private Room getRoom(Long roomId) {
-        Room room = roomRepository.findById(roomId).orElseThrow(
+        return roomRepository.findById(roomId).orElseThrow(
                 () -> new EntityNotFoundException(roomId)
         );
-        return room;
     }
 
     private Employee getEmployee(Long employeeId) {
-        Employee employee = employeeRepository.findById(employeeId).orElseThrow(
+        return employeeRepository.findById(employeeId).orElseThrow(
                 () -> new EntityNotFoundException(employeeId)
         );
-        return employee;
     }
 
     private Client getClient(Long clientId) {
-        Client client = clientRepository.findById(clientId).orElseThrow(
+        return clientRepository.findById(clientId).orElseThrow(
                 () -> new EntityNotFoundException(clientId)
         );
-        return client;
     }
 
     private static Record mapRecord(Client client, Room room, Employee employee, LocalDate date) {
-        Record checkInRecord = new Record();
-        checkInRecord.setClient(client);
-        checkInRecord.setRoom(room);
-        checkInRecord.setEmployee(employee);
-        checkInRecord.setCheckInDate(LocalDate.now());
-        checkInRecord.setCheckedOut(false);
-        checkInRecord.setCheckOutDate(date);
-        return checkInRecord;
+        return Record.builder()
+                .client(client)
+                .room(room)
+                .employee(employee)
+                .checkInDate(LocalDate.now())
+                .isCheckedOut(false)
+                .checkOutDate(date)
+                .build();
     }
 
 }

@@ -20,7 +20,7 @@ public interface RecordService {
 
     int getTotalForRoom(Long id);
 
-    List<RecordClientDateDto> getLastRoomClients(Long roomId);
+    List<RecordClientDateDto> getLastRoomClients(Long id);
 
     List<RoomNoClientsDto> getAllFreeRoomsByDate(String dateLine);
 

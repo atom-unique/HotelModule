@@ -2,6 +2,7 @@ package org.kravchenko.hotel.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,16 +26,22 @@ public class Room {
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "room_id")
     List<Client> clients;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotEmpty
     private int price;
+
     @NotEmpty
     private int capacity;
+
     @NotEmpty
     private int rating;
+
     private boolean isOccupied;
+
     private boolean isInService;
 
 }

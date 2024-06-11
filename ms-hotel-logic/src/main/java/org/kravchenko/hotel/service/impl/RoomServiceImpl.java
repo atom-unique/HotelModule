@@ -121,10 +121,9 @@ public class RoomServiceImpl implements RoomService {
     }
 
     private Room getRoom(Long id) {
-        Room room = roomRepository.findById(id).orElseThrow(
+        return roomRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(id)
         );
-        return room;
     }
 
 }

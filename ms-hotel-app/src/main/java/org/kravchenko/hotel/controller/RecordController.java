@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.kravchenko.hotel.service.dto.RecordClientDateDto;
 import org.kravchenko.hotel.service.dto.RecordClientWithRoomDto;
 import org.kravchenko.hotel.service.dto.RoomNoClientsDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public interface RecordController {
             description = "Метод позволяет заселить клиента в номер"
     )
     @PostMapping("/checkin")
-    void checkIn(
+    ResponseEntity<String> checkIn(
             @RequestParam Long clientId,
             @RequestParam Long employeeId,
             @RequestParam Long roomId,
@@ -37,14 +38,14 @@ public interface RecordController {
             description = "Метод позволяет выселить клиента из номера"
     )
     @PatchMapping("/checkout")
-    void checkOut(@RequestParam String name, @RequestParam String surname);
+    ResponseEntity<String> checkOut(@RequestParam String name, @RequestParam String surname);
 
     @Operation(
             summary = "Получение количества постояльцев",
             description = "Метод позволяет получить количество постояльцев"
     )
     @GetMapping("/clients/count")
-    int getAllFreeRoomsCount();
+    int getClientsCount();
 
     @Operation(
             summary = "Получение списка клиентов и их номеров",
@@ -72,7 +73,7 @@ public interface RecordController {
             description = "Метод позволяет посмотреть трех последних постояльцев номера и даты их пребывания)"
     )
     @GetMapping("/room/clients/last")
-    List<RecordClientDateDto> getLastRoomClients(@RequestParam Long roomId);
+    List<RecordClientDateDto> getLastRoomClients(@RequestParam Long id);
 
     @Operation(
             summary = "Получить список номеров, которые будут свободны по определенной дате в будущем",

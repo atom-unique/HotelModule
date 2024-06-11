@@ -6,6 +6,7 @@ import org.kravchenko.hotel.service.RecordService;
 import org.kravchenko.hotel.service.dto.RecordClientDateDto;
 import org.kravchenko.hotel.service.dto.RecordClientWithRoomDto;
 import org.kravchenko.hotel.service.dto.RoomNoClientsDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class RecordControllerImpl implements RecordController {
 
     private final RecordService recordService;
 
-    public void checkIn(
+    public ResponseEntity<String> checkIn(
             Long clientId,
             Long employeeId,
             Long roomId,
@@ -24,13 +25,15 @@ public class RecordControllerImpl implements RecordController {
             List<Long> services
     ) {
         recordService.checkIn(clientId, employeeId, roomId, checkOutDate, services);
+        return ResponseEntity.ok("Клиент успешно заселен!");
     }
 
-    public void checkOut(String name, String surname) {
+    public ResponseEntity<String> checkOut(String name, String surname) {
         recordService.checkOut(name, surname);
+        return ResponseEntity.ok("Клиент выселен!");
     }
 
-    public int getAllFreeRoomsCount() {
+    public int getClientsCount() {
         return recordService.clientsCount();
     }
 
@@ -46,8 +49,8 @@ public class RecordControllerImpl implements RecordController {
         return recordService.getTotalForRoom(id);
     }
 
-    public List<RecordClientDateDto> getLastRoomClients(Long roomId) {
-        return recordService.getLastRoomClients(roomId);
+    public List<RecordClientDateDto> getLastRoomClients(Long id) {
+        return recordService.getLastRoomClients(id);
     }
 
     public List<RoomNoClientsDto> getAllFreeRoomsByDate(String dateLine) {

@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.kravchenko.hotel.service.dto.ClientDto;
 import org.kravchenko.hotel.service.dto.ServicePriceDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,13 +37,13 @@ public interface ClientController {
             description = "Метод позволяет добавить нового клиента"
     )
     @PostMapping("/add")
-    void addClient(@RequestBody ClientDto clientDto);
+    ResponseEntity<String> addClient(@RequestBody ClientDto clientDto);
 
     @Operation(
             summary = "Удаление клиента по id",
             description = "Метод позволяет удалить клиента по id"
     )
     @DeleteMapping("/delete")
-    void deleteClient(@RequestParam Long id);
+    ResponseEntity<String> deleteClient(@RequestParam Long id);
 
 }
