@@ -81,7 +81,7 @@ public class ClientServiceImplTest {
         try {
             clientService.findClient(id);
         } catch (EntityNotFoundException e) {
-            assertEquals("Entity not found by parameter : " + id, e.getMessage());
+            assertEquals("Entity not found by parameter: " + id, e.getMessage());
         }
 
         verify(clientRepository, times(1)).findById(1L);
@@ -151,7 +151,7 @@ public class ClientServiceImplTest {
         try {
             clientService.getClientServices(clientId);
         } catch (EntityNotFoundException e) {
-            assertEquals("Entity not found by parameter : " + clientId, e.getMessage());
+            assertEquals("Entity not found by parameter: " + clientId, e.getMessage());
         }
 
         verify(clientRepository, times(1)).findById(clientId);

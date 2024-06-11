@@ -61,7 +61,7 @@ public class EmployeeServiceImplTest {
             employeeService.findEmployee(employeeId);
             fail("Expected EntityNotFoundException to be thrown");
         } catch (EntityNotFoundException e) {
-            assertEquals(e.getMessage(), "Entity not found by parameter : " + employeeId);
+            assertEquals(e.getMessage(), "Entity not found by parameter: " + employeeId);
         }
 
         verify(employeeRepository, times(1)).findById(employeeId);

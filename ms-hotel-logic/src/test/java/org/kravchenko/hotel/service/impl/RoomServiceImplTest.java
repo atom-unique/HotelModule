@@ -106,7 +106,7 @@ public class RoomServiceImplTest {
             roomService.findRoom(roomId);
             fail("Expected EntityNotFoundException to be thrown");
         } catch (EntityNotFoundException e) {
-            assertEquals(e.getMessage(), "Entity not found by parameter : " + roomId);
+            assertEquals(e.getMessage(), "Entity not found by parameter: " + roomId);
         }
 
         verify(roomRepository, times(1)).findById(roomId);

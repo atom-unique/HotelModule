@@ -87,7 +87,7 @@ public class ServiceServiceImplTest {
             serviceService.servicePriceUpdate(serviceId, newPrice);
             fail("Expected EntityNotFoundException to be thrown");
         } catch (EntityNotFoundException e) {
-            assertEquals(e.getMessage(), "Entity not found by parameter : " + serviceId);
+            assertEquals(e.getMessage(), "Entity not found by parameter: " + serviceId);
         }
 
         verify(serviceRepository, times(1)).findById(serviceId);
